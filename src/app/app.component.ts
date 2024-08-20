@@ -24,7 +24,5 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 export class AppComponent {
   title = 'ingreso-egreso';
 
-  constructor(private authService: AuthService) {
-    this.authService.initAuthListener();
-  }
+
 }

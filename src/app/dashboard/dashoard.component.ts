@@ -12,6 +12,7 @@ import { AppState } from '../app.reducer';
 import { IngresoEgreso } from '../models/ingreso-egreso.model';
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
 import { setItems } from '../ingreso-egreso/ingreso-egreso.actions';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashoard',
@@ -25,6 +26,10 @@ export class DashoardComponent implements OnInit {
   private readonly destroy: DestroyRef = inject(DestroyRef);
   private readonly ingresoEgresoService: IngresoEgresoService =
     inject(IngresoEgresoService);
+
+  constructor(private authService: AuthService) {
+    this.authService.initAuthListener();
+  }
 
   ngOnInit(): void {
     this.ingresoEgreso$ = this.store.select('user').pipe(
