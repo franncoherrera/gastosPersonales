@@ -7,6 +7,8 @@ package-lock.json
 dist/
 out-tsc/
 build/
+docs/
+
 
 # Environment files
 src/environments/*.ts
