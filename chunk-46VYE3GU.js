@@ -1,0 +1,1 @@
+import{a}from"./chunk-2YE5LL3M.js";import"./chunk-Z6UW565V.js";import"./chunk-NZMGJ6BS.js";import"./chunk-EAOQ4LPA.js";import"./chunk-2YQW6YIB.js";import"./chunk-6CDK5G3D.js";import"./chunk-YBZANQQV.js";export{a as RegisterComponent};
