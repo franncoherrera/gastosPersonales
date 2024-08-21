@@ -1,18 +1,11 @@
-import {
-  ApplicationRef,
-  Component,
-  DestroyRef,
-  inject,
-  OnInit,
-} from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
-import { filter, first, Observable, switchMap, tap } from 'rxjs';
+import { filter, Observable, switchMap, tap } from 'rxjs';
 import { AppState } from '../app.reducer';
+import { setItems } from '../ingreso-egreso/ingreso-egreso.actions';
 import { IngresoEgreso } from '../models/ingreso-egreso.model';
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
-import { setItems } from '../ingreso-egreso/ingreso-egreso.actions';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashoard',
@@ -26,10 +19,6 @@ export class DashoardComponent implements OnInit {
   private readonly destroy: DestroyRef = inject(DestroyRef);
   private readonly ingresoEgresoService: IngresoEgresoService =
     inject(IngresoEgresoService);
-
-  constructor(private authService: AuthService) {
-    this.authService.initAuthListener();
-  }
 
   ngOnInit(): void {
     this.ingresoEgreso$ = this.store.select('user').pipe(

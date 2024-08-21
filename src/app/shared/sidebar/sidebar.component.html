@@ -8,7 +8,7 @@
           </div>
 
           <div class="text-wrapper d-flex align-items-center">
-            <p class="profile-name m-0">{{nombre}}</p>
+            <p class="profile-name m-0">{{ nombre }}</p>
           </div>
         </div>
       </div>
@@ -36,10 +36,17 @@
     </li>
 
     <li class="nav-item">
-      <a routerLink="/login" class="nav-link cursor">
+      @if(!loading){
+      <a class="nav-link cursor" (click)="logOut()">
         <i class="menu-icon fa fa-sign-out-alt"></i>
-        <span class="menu-title" (click)="logOut()">Cerrar sesión</span>
+        <span class="menu-title">Cerrar sesión</span>
       </a>
+      } @else {
+      <a class="nav-link cursor">
+        <i class="menu-icon fa fa-sign-out-alt"></i>
+        <span class="menu-title">Cerrando...</span>
+      </a>
+      }
     </li>
   </ul>
 </nav>

@@ -9,11 +9,11 @@ import {
 } from '@angular/fire/auth';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { Store } from '@ngrx/store';
-import { filter, Observable, of, switchMap, tap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { AppState } from '../app.reducer';
 import { setUser, unSetUser } from '../auth/auth.actions';
-import { Usuario } from '../models/usuario.model';
 import { unSetitems } from '../ingreso-egreso/ingreso-egreso.actions';
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root',
@@ -83,14 +83,6 @@ export class AuthService {
   }
 
   isAuth(): Observable<boolean> {
-    return this.authState$.pipe(
-      tap((aUser: Usuario) => {
-        if (aUser) {
-          return true;
-        } else {
-          return false;
-        }
-      })
-    );
+    return this.authState$.pipe(map((aUser: Usuario | null) => !!aUser));
   }
 }
